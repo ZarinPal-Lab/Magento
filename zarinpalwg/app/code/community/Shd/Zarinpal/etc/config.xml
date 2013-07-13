@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ * @category   Payment
+ * @package    Shd_zarinpalwg
+ * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
+ * @see https://github.com/shayand
+ */
+-->
+<config>
+    <modules>
+        <Shd_zarinpalwg>
+            <version>1.0.0</version>
+        </Shd_zarinpalwg>
+    </modules>
+
+    <global>
+        <models>
+            <zarinpalwg>
+                <class>Shd_zarinpalwg_Model</class>
+            </zarinpalwg>
+        </models>
+        <helpers>
+            <zarinpalwg>
+                <class>Shd_zarinpalwg_Helper</class>
+            </zarinpalwg>
+        </helpers>
+        <resources>
+            <zarinpalwg_setup>
+                <setup>
+                    <module>Shd_zarinpalwg</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </zarinpalwg_setup>
+            <zarinpalwg_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </zarinpalwg_write>
+            <zarinpalwg_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </zarinpalwg_read>
+        </resources>
+        <blocks>
+            <zarinpalwg><class>Shd_zarinpalwg_Block</class></zarinpalwg>
+        </blocks>
+    </global>
+
+    <frontend>
+        <routers>
+            <zarinpalwg>
+                <use>standard</use>
+                <args>
+                    <module>Shd_zarinpalwg</module>
+                    <frontName>zarinpalwg</frontName>
+                </args>
+            </zarinpalwg>
+        </routers>
+        <translate>
+            <modules>
+                <Shd_zarinpalwg>
+                    <files>
+                        <default>Shd_zarinpalwg.csv</default>
+                    </files>
+                </Shd_zarinpalwg>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <zarinpalwg>
+                    <file>zarinpalwg.xml</file>
+                </zarinpalwg>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Shd_zarinpalwg>
+                    <files>
+                        <default>Shd_zarinpalwg.csv</default>
+                    </files>
+                </Shd_zarinpalwg>
+            </modules>
+        </translate>
+    </adminhtml>
+	<phoenix>
+		<zarinpalwg>
+			<verify_url>https://ir.zarinpalwg.com</verify_url>
+		</zarinpalwg>
+	</phoenix>
+    <default>
+        <payment>        
+            <zarinpalwg>
+                <active>0</active>
+                <model>zarinpalwg/zarinpalwg</model>
+                <order_status>1</order_status>
+                <title>زرین پال</title>
+                <allowspecific>0</allowspecific>
+                <use_store_currency>0</use_store_currency>
+            </zarinpalwg>
+        </payment>
+    </default> 
+</config>
