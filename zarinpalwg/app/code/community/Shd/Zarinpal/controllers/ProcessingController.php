@@ -98,7 +98,7 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
 				);
 			
 		    
-			$client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl');
+			$client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl');
 			
 			$res = $client->__soapCall('PaymentVerification',$params);
 			
