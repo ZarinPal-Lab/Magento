@@ -96,7 +96,7 @@ class Shd_zarinpalwg_Block_Redirect extends Mage_Core_Block_Template
 					);
 
 		
-		$client = new SoapClient('https://www.zarinpalwg.com/pg/services/WebGate/wsdl');
+		$client = new SoapClient('https://de.zarinpalwg.com/pg/services/WebGate/wsdl');
 		$res = $client->__soapCall('PaymentRequest',$params);
 		
 		if($res->Status == 100 ){
