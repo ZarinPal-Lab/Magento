@@ -96,11 +96,14 @@ class Shd_zarinpalwg_Block_Redirect extends Mage_Core_Block_Template
 					);
 
 		
-		$client = new SoapClient('https://de.zarinpalwg.com/pg/services/WebGate/wsdl');
+		$client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl');
 		$res = $client->__soapCall('PaymentRequest',$params);
 		
 		if($res->Status == 100 ){
-			$return = "https://www.zarinpalwg.com/pg/StartPay/" . $result->Authority . "/";
+			$return = "https://www.zarinpal.com/pg/StartPay/" . $result->Authority ;
+		} else {
+			Mage::log('Zarinpal ERR: ' . $result->Status);
+			echo $result->Status ;
 		}
 		return $return;
     }
