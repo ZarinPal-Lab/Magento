@@ -2,23 +2,23 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
-class Shd_zarinpalwg_Model_Config_Backend_Sellerid extends Mage_Core_Model_Config_Data
+class Zarinpal_WebGate_Model_Config_Backend_Sellerid extends Mage_Core_Model_Config_Data
 {
     /**
      * Verify seller id in ClickandBuy registration system to reduce configuration failures (experimental)
      *
-     * @return Shd_zarinpalwg_Model_zarinpalwg_Config_Backend_Sellerid
+     * @return Zarinpal_WebGate_Model_zarinpalwg_Config_Backend_Sellerid
      */
     protected function _beforeSave()
     {
     	try {
     	    if ($this->getValue()) {
     			$client = new Varien_Http_Client();
-    			$client->setUri((string)Mage::getConfig()->getNode('shd/zarinpalwg/verify_url'))
+    			$client->setUri((string)Mage::getConfig()->getNode('Zarinpal/WebGate/verify_url'))
     				->setConfig(array('timeout'=>10,))
     				->setHeaders('accept-encoding', '')
     				->setParameterPost('seller_id', $this->getValue())

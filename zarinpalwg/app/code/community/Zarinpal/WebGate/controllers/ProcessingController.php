@@ -2,14 +2,14 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
-class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Action
+class Zarinpal_WebGate_ProcessingController extends Mage_Core_Controller_Front_Action
 {
-    protected $_successBlockType  = 'zarinpalwg/success';
-    protected $_failureBlockType  = 'zarinpalwg/failure';
+    protected $_successBlockType  = 'WebGate/success';
+    protected $_failureBlockType  = 'WebGate/failure';
 
     protected $_order = NULL;
     protected $_paymentInst = NULL;
@@ -46,7 +46,7 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
                 $order->setState(
                     Mage_Sales_Model_Order::STATE_PENDING_PAYMENT,
                     $this->_getPendingPaymentStatus(),
-                    Mage::helper('zarinpalwg')->__('Customer was redirected to zarinpalwg gateway.')
+                    Mage::helper('WebGate')->__('Customer was redirected to WebGate gateway.')
                 )->save();
             }
 
@@ -88,7 +88,7 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
 			$price = $quote["grand_total"]/10 ;
 			
 			$callBackUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
-			$callBackUrl .= "zarinpalwg/processing/response/";
+			$callBackUrl .= "WebGate/processing/response/";
 			
 			$params = 
 			array(
@@ -118,7 +118,7 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
 				}
 	
 				// add order history comment
-				$this->_order->addStatusToHistory($this->_paymentInst->getConfigData('order_status'), Mage::helper('zarinpalwg')->__('Payment complete'));
+				$this->_order->addStatusToHistory($this->_paymentInst->getConfigData('order_status'), Mage::helper('WebGate')->__('Payment complete'));
 	
 				// send email
 				$this->_order->sendNewOrderEmail();
@@ -134,10 +134,10 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
 						->toHtml());
 				
 			}else{
-				$this->_redirect('zarinpalwg/processing/caberror');
+				$this->_redirect('WebGate/processing/caberror');
 			}			
 		}else{
-			$this->_redirect('zarinpalwg/processing/caberror');
+			$this->_redirect('WebGate/processing/caberror');
 		}
     }
     public function successAction()
@@ -200,7 +200,7 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
 				// get ClickandBuy system domain (e.g. "eu")
             preg_match('/http[s]?:\/\/[a-z0-9_-]*\.([a-z]{2})\.[a-z0-9]*\.[a-z]{2,6}/i', $this->_paymentInst->getConfigData('premium_link'), $matches);
 				// create client object
-            #$client = new SoapClient('http://wsdl.'.$matches[1].'.zarinpalwg.com/TMI/1.4/TransactionManagerbinding.wsdl',array('exceptions' => 0));
+          
 	    $client = new SoapClient('http://Acquirer.sb24.com/ref-payment/ws/ReferencePayment?WSDL',array('exceptions' => 0));
 
             // second confirmation data
@@ -233,7 +233,7 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
             }
 
             // add order history comment
-            $this->_order->addStatusToHistory($this->_paymentInst->getConfigData('order_status'), Mage::helper('zarinpalwg')->__('The amount has been authorized and captured by ClickandBuy.'));
+            $this->_order->addStatusToHistory($this->_paymentInst->getConfigData('order_status'), Mage::helper('WebGate')->__('The amount has been authorized and captured by ClickandBuy.'));
 
             // send email
             $this->_order->sendNewOrderEmail();
@@ -312,6 +312,6 @@ class Shd_zarinpalwg_ProcessingController extends Mage_Core_Controller_Front_Act
 
     protected function _getPendingPaymentStatus()
     {
-        return Mage::helper('zarinpalwg')->getPendingPaymentStatus();
+        return Mage::helper('WebGate')->getPendingPaymentStatus();
     }
 }

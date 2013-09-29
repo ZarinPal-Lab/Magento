@@ -2,7 +2,7 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
@@ -12,7 +12,7 @@
     <br />
     لطفا منتظر بمانید 
 </center>
-<form id="shd_parsian" action="<?php echo $this->getFormAction();?>" method="POST">
+<form id="Zarinpal_WebGate" action="<?php echo $this->getFormAction();?>" method="POST">
 <?php if (is_array($this->getFormData())): ?>
     <?php foreach ($this->getFormData() as $name => $value): ?>
         <input type="hidden" name="<?php echo $name; ?>" value="<?php echo $value; ?>"/>
@@ -22,7 +22,7 @@
 
 <script type="text/javascript">
 //<![CDATA[
-    var paymentform = document.getElementById('shd_parsian');
+    var paymentform = document.getElementById('Zarnpal_WebGate');
     window.onload = paymentform.submit();
 //]]>
 </script>

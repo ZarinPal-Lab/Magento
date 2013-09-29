@@ -3,107 +3,107 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
 -->
 <config>
     <modules>
-        <Shd_zarinpalwg>
+        <Zarinpal_WebGate>
             <version>1.0.0</version>
-        </Shd_zarinpalwg>
+        </Zarinpal_WebGate>
     </modules>
 
     <global>
         <models>
-            <zarinpalwg>
-                <class>Shd_zarinpalwg_Model</class>
-            </zarinpalwg>
+            <WebGate>
+                <class>Zarinpal_WebGate_Model</class>
+            </WebGate>
         </models>
         <helpers>
-            <zarinpalwg>
-                <class>Shd_zarinpalwg_Helper</class>
-            </zarinpalwg>
+            <WebGate>
+                <class>Zarinpal_WebGate_Helper</class>
+            </WebGate>
         </helpers>
         <resources>
-            <zarinpalwg_setup>
+            <WebGate_setup>
                 <setup>
-                    <module>Shd_zarinpalwg</module>
+                    <module>Zarinpal_WebGate</module>
                 </setup>
                 <connection>
                     <use>core_setup</use>
                 </connection>
-            </zarinpalwg_setup>
-            <zarinpalwg_write>
+            </WebGate_setup>
+            <WebGate_write>
                 <connection>
                     <use>core_write</use>
                 </connection>
-            </zarinpalwg_write>
-            <zarinpalwg_read>
+            </WebGate_write>
+            <WebGate_read>
                 <connection>
                     <use>core_read</use>
                 </connection>
-            </zarinpalwg_read>
+            </WebGate_read>
         </resources>
         <blocks>
-            <zarinpalwg><class>Shd_zarinpalwg_Block</class></zarinpalwg>
+            <WebGate><class>Zarinpal_WebGate_Block</class></WebGate>
         </blocks>
     </global>
 
     <frontend>
         <routers>
-            <zarinpalwg>
+            <WebGate>
                 <use>standard</use>
                 <args>
-                    <module>Shd_zarinpalwg</module>
-                    <frontName>zarinpalwg</frontName>
+                    <module>Zarinpal_WebGate</module>
+                    <frontName>WebGate</frontName>
                 </args>
-            </zarinpalwg>
+            </WebGate>
         </routers>
         <translate>
             <modules>
-                <Shd_zarinpalwg>
+                <Zarinpal_WebGate>
                     <files>
-                        <default>Shd_zarinpalwg.csv</default>
+                        <default>Zarinpal_WebGate.csv</default>
                     </files>
-                </Shd_zarinpalwg>
+                </Zarinpal_WebGate>
             </modules>
         </translate>
         <layout>
             <updates>
-                <zarinpalwg>
-                    <file>zarinpalwg.xml</file>
-                </zarinpalwg>
+                <WebGate>
+                    <file>WebGate.xml</file>
+                </WebGate>
             </updates>
         </layout>
     </frontend>
     <adminhtml>
         <translate>
             <modules>
-                <Shd_zarinpalwg>
+                <Zarinpal_WebGate>
                     <files>
-                        <default>Shd_zarinpalwg.csv</default>
+                        <default>Zarinpal_WebGate.csv</default>
                     </files>
-                </Shd_zarinpalwg>
+                </Zarinpal_WebGate>
             </modules>
         </translate>
     </adminhtml>
 	<phoenix>
-		<zarinpalwg>
-			<verify_url>https://ir.zarinpalwg.com</verify_url>
-		</zarinpalwg>
+		<WebGate>
+			<verify_url>https://ir.zarinpal.com</verify_url>
+		</WebGate>
 	</phoenix>
     <default>
         <payment>        
-            <zarinpalwg>
+            <WebGate>
                 <active>0</active>
-                <model>zarinpalwg/zarinpalwg</model>
+                <model>WebGate/WebGate</model>
                 <order_status>1</order_status>
                 <title>زرین پال</title>
                 <allowspecific>0</allowspecific>
                 <use_store_currency>0</use_store_currency>
-            </zarinpalwg>
+            </WebGate>
         </payment>
     </default> 
 </config>

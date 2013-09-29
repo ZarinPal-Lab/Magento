@@ -2,22 +2,22 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
 
-class Shd_zarinpalwg_Model_zarinpalwg extends Mage_Payment_Model_Method_Abstract
+class Zarinpal_WebGate_Model_WebGate extends Mage_Payment_Model_Method_Abstract
 {
     /**
     * unique internal payment method identifier
     *
     * @var string [a-z0-9_]
     **/
-    protected $_code = 'zarinpalwg';
+    protected $_code = 'WebGate';
 
-    protected $_formBlockType = 'zarinpalwg/form';
-    protected $_infoBlockType = 'zarinpalwg/info';
+    protected $_formBlockType = 'WebGate/form';
+    protected $_infoBlockType = 'WebGate/info';
 
     protected $_isGateway               = false;
     protected $_canAuthorize            = false;
@@ -43,7 +43,7 @@ class Shd_zarinpalwg_Model_zarinpalwg extends Mage_Payment_Model_Method_Abstract
 
     public function getOrderPlaceRedirectUrl()
     {
-          return Mage::getUrl('zarinpalwg/processing/redirect', array('_secure'=>true));
+          return Mage::getUrl('WebGate/processing/redirect', array('_secure'=>true));
 	  #return "http://Acquirer.sb24.com/ref-payment/ws/ReferencePayment?WSDL";
     }
 
@@ -80,7 +80,7 @@ class Shd_zarinpalwg_Model_zarinpalwg extends Mage_Payment_Model_Method_Abstract
  		$premiumPart = substr($premiumLink, 0, $pEndPos+1);
 
 		// add url part for the callback controller
- 		preg_match('/^http[s]?:\/\/[a-z0-9._-]*\/(.*)$/i', Mage::getUrl('zarinpalwg/processing/response', array('_secure'=>true)), $matches);
+ 		preg_match('/^http[s]?:\/\/[a-z0-9._-]*\/(.*)$/i', Mage::getUrl('WebGate/processing/response', array('_secure'=>true)), $matches);
  		$url = $premiumPart . $matches[1];
 
         return $url;
@@ -104,7 +104,7 @@ class Shd_zarinpalwg_Model_zarinpalwg extends Mage_Payment_Model_Method_Abstract
         $params = array(
                    'price'					=>	$price,
                    'cb_currency'			=>	$currency,
-                   'cb_content_name_utf'	=>	Mage::helper('zarinpalwg')->__('Your purchase at') . ' ' . Mage::app()->getStore()->getName(),
+                   'cb_content_name_utf'	=>	Mage::helper('WebGate')->__('Your purchase at') . ' ' . Mage::app()->getStore()->getName(),
                    'externalBDRID'			=>	$this->getOrder()->getRealOrderId() . '-' . $this->getOrder()->getQuoteId(),
                  );
 

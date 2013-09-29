@@ -3,7 +3,7 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
@@ -12,7 +12,7 @@
    <sections>
         <payment>
             <groups>
-                <zarinpalwg translate="label comment" module="payment">
+                <webgate translate="label comment" module="payment">
                     <label>زرین پال</label>
                     <comment>&lt;strong&gt;Please note&lt;/strong&gt;: All rights of this module belong to Shayan Davarzani &lt;a href="mailto:shayandavarzani@gmail.com" target="_blank"&gt;shayandavarzani@gmail.com&lt;/a&gt;</comment>
                     <frontend_type>text</frontend_type>
@@ -59,14 +59,14 @@
                             <label>Merchant ID</label>
                             <comment>like XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</comment>
                             <frontend_type>text</frontend_type>
-                            <backend_model>zarinpalwg/config_backend_sellerid</backend_model>
+                            <backend_model>WebGate/config_backend_sellerid</backend_model>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </seller_id>                        
                     </fields>
-                </zarinpalwg>
+                </webgate>
             </groups>
         </payment>
     </sections>

@@ -2,11 +2,11 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
-class Shd_zarinpalwg_Helper_Data extends Mage_Payment_Helper_Data
+class Zarinpal_WebGate_Helper_Data extends Mage_Payment_Helper_Data
 {
     public function getPendingPaymentStatus()
     {

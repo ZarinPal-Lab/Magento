@@ -2,11 +2,11 @@
 /**
  * Magento
  * @category   Payment
- * @package    Shd_zarinpalwg
+ * @package    Zarinpal_WebGate
  * @copyright  Copyright (c) 2013 Shayan Davarzani (shayandavarzani@gmail.com)
  * @see https://github.com/shayand
  */
-class Shd_zarinpalwg_Block_Redirect extends Mage_Core_Block_Template
+class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
 {
     /**
      * Return checkout session instance
