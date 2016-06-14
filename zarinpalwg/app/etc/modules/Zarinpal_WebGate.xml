@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-  <modules>
-    <Zarinpal_WebGate>
-      <active>true</active>
-      <codePool>community</codePool>
-    </Zarinpal_WebGate>
-  </modules>
-</config>
