@@ -12,7 +12,7 @@
    <sections>
         <payment>
             <groups>
-                <webgate translate="label comment" module="payment">
+                <WebGate translate="label comment" module="payment">
                     <label>زرین پال</label>
                     <comment>&lt;strong&gt;Please note&lt;/strong&gt;: All rights of this module belong to Shayan Davarzani &lt;a href="mailto:shayandavarzani@gmail.com" target="_blank"&gt;shayandavarzani@gmail.com&lt;/a&gt;</comment>
                     <frontend_type>text</frontend_type>
@@ -66,7 +66,7 @@
                             <show_in_store>1</show_in_store>
                         </seller_id>                        
                     </fields>
-                </webgate>
+                </WebGate>
             </groups>
         </payment>
     </sections>
