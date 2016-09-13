@@ -9,7 +9,7 @@
  */
 -->
 <layout version="0.1.0">
-<WebGate_processing_failure>
+<webgate_processing_failure>
     <reference name="root">
         <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
     </reference>
@@ -17,13 +17,13 @@
         <block type="WebGate/failure" name="zarinpalwg_failure" template="WebGate/failure.phtml">
         </block>
     </reference>
-</WebGate_processing_failure>
-<WebGate_processing_redirect>
+</webgate_processing_failure>
+<webgate_processing_redirect>
     <reference name="root">
         <action method="setTemplate"><template>WebGate/blank.phtml</template></action>
     </reference>
     <reference name="content">
         <block type="WebGate/redirect" name="zarinpalwg_redirect" template="WebGate/redirect.phtml" />
     </reference>
-</WebGate_processing_redirect>
+</webgate_processing_redirect>
 </layout>
