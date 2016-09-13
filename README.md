@@ -2,5 +2,5 @@
 
 Bug fixes for official zarinpal module(that is not working)
 
-Tested on :
-Magento 1.9
+This module is not completly tested,
+if you have any problem, tell me.
