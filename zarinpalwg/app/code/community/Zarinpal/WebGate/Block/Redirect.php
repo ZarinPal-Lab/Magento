@@ -83,7 +83,7 @@ class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
 		$price /= 10;
 		
 		$callBackUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
-		$callBackUrl .= "zarinpal/processing/response/";
+		$callBackUrl .= "WebGate/processing/response/";
 		
 		$params = array(
 					'MerchantID' 	=> $seller_id ,
@@ -91,7 +91,7 @@ class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
 					'Description' 	=> $order["entity_id"] ,
 					'Email' 		=> '' ,
 					'Mobile' 		=> '' ,
-					'CallbackURL' 	=> $CallbackURL
+					'CallbackURL' 	=> $callBackUrl
 
 					);
 
@@ -100,10 +100,10 @@ class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
 		$res = $client->__soapCall('PaymentRequest',$params);
 		
 		if($res->Status == 100 ){
-			$return = "https://www.zarinpal.com/pg/StartPay/" . $result->Authority ;
+			$return = "https://www.zarinpal.com/pg/StartPay/" . $res->Authority ;
 		} else {
-			Mage::log('Zarinpal ERR: ' . $result->Status);
-			echo $result->Status ;
+			Mage::log('Zarinpal ERR: ' . $res->Status);
+			echo $res->Status ;
 		}
 		return $return;
     }
