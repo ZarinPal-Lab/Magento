@@ -17,7 +17,7 @@ class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
     {
         return Mage::getSingleton('checkout/session');
     }
-
+    
     /**
      * Return order instance
      *
@@ -33,7 +33,7 @@ class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
             return null;
         }
     }
-
+    
     /**
      * Get form data
      *
@@ -42,28 +42,28 @@ class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
     public function getFormData()
     {
         #return $this->_getOrder()->getPayment()->getMethodInstance()->getFormFields();
-	$order = $this->_getOrder()->_data;
-	$array = $this->_getOrder()->getPayment()->getMethodInstance()->getFormFields();
-	$price = $array["price"];
+        $order = $this->_getOrder()->_data;
+        $array = $this->_getOrder()->getPayment()->getMethodInstance()->getFormFields();
+        $price = $array["price"];
         
-    $seller_id = $this->_getOrder()->getPayment()->getMethodInstance()->getConfigData('seller_id');	
-
-	$len = strlen($price);
-	$len -= 2;
-	$price = substr($price,0,$len);
-	
-	$params = array(
-	 			'pin' => $seller_id ,  
-                'amount' => $price,
-                'orderId' => $order["entity_id"],
-				'authority' => 0,
-				'status' => 1
-              );
-	
-	
-	return $params;		
+        $seller_id = $this->_getOrder()->getPayment()->getMethodInstance()->getConfigData('seller_id');
+        
+        $len = strlen($price);
+        $len -= 2;
+        $price = substr($price, 0, $len);
+        
+        $params = array(
+            'pin' => $seller_id,
+            'amount' => $price,
+            'orderId' => $order["entity_id"],
+            'authority' => 0,
+            'status' => 1
+        );
+        
+        
+        return $params;
     }
-
+    
     /**
      * Getting gateway url
      *
@@ -71,40 +71,40 @@ class Zarinpal_WebGate_Block_Redirect extends Mage_Core_Block_Template
      */
     public function getFormAction()
     {
-    		   
-		
-		$order = $this->_getOrder()->_data;
-		$array = $this->_getOrder()->getPayment()->getMethodInstance()->getFormFields();
-		$price = $array["price"];
-			
-		$seller_id = $this->_getOrder()->getPayment()->getMethodInstance()->getConfigData('seller_id');	
-	
-		$price = round($order["grand_total"],0);
-		$price /= 10;
-		
-		$callBackUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
-		$callBackUrl .= "zarinpal/processing/response/";
-		
-		$params = array(
-					'MerchantID' 	=> $seller_id ,
-					'Amount' 		=> $price ,
-					'Description' 	=> $order["entity_id"] ,
-					'Email' 		=> '' ,
-					'Mobile' 		=> '' ,
-					'CallbackURL' 	=> $CallbackURL
-
-					);
-
-		
-		$client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl');
-		$res = $client->__soapCall('PaymentRequest',$params);
-		
-		if($res->Status == 100 ){
-			$return = "https://www.zarinpal.com/pg/StartPay/" . $result->Authority ;
-		} else {
-			Mage::log('Zarinpal ERR: ' . $result->Status);
-			echo $result->Status ;
-		}
-		return $return;
+        
+        
+        $order = $this->_getOrder()->_data;
+        $array = $this->_getOrder()->getPayment()->getMethodInstance()->getFormFields();
+        $price = $array["price"];
+        
+        $seller_id = $this->_getOrder()->getPayment()->getMethodInstance()->getConfigData('seller_id');
+        
+        $price = round($order["grand_total"], 0);
+        $price /= 10;
+        
+        $callBackUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
+        $callBackUrl .= "WebGate/processing/response/";
+        
+        $params = array(
+            'MerchantID' => $seller_id,
+            'Amount' => $price,
+            'Description' => $order["entity_id"],
+            'Email' => '',
+            'Mobile' => '',
+            'CallbackURL' => $callBackUrl
+            
+        );
+        
+        
+        $client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl');
+        $res    = $client->__soapCall('PaymentRequest', $params);
+        
+        if ($res->Status == 100) {
+            $return = "https://www.zarinpal.com/pg/StartPay/" . $res->Authority;
+        } else {
+            Mage::log('Zarinpal ERR: ' . $res->Status);
+            echo $res->Status;
+        }
+        return $return;
     }
 }
